@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>monetize.global - Turn DMs Into Revenue</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0B0B0F;
+            --bg-elevated: #141419;
+            --bg-card: #1A1A22;
+            --accent: #00E5A0;
+            --accent-dim: rgba(0,229,160,0.12);
+            --text-100: #F0F0F2;
+            --text-80: rgba(240,240,242,0.80);
+            --text-50: rgba(240,240,242,0.50);
+            --text-30: rgba(240,240,242,0.30);
+            --text-20: rgba(240,240,242,0.20);
+            --border: rgba(240,240,242,0.08);
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--text-20) transparent;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text-100);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* ─── NAV ─── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, var(--bg) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .nav__logo {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-100);
+            text-decoration: none;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.3px;
+        }
+
+        .nav__logo span {
+            color: var(--accent);
+        }
+
+        .nav__center {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav__progress {
+            font-family: var(--font-body);
+            font-size: 12px;
+            color: var(--text-50);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .nav__cta {
+            position: relative;
+            z-index: 1;
+            background: var(--accent);
+            color: var(--bg);
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 10px 24px;
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav__cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0,229,160,0.3);
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 0 40px 60px;
+            position: relative;
+        }
+
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-dim);
+            border: 1px solid rgba(0,229,160,0.2);
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            margin-bottom: 32px;
+            width: fit-content;
+        }
+
+        .hero__badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero__wrap {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            gap: 80px;
+        }
+
+        .hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(42px, 6.5vw, 86px);
+            font-weight: 800;
+            line-height: 1.02;
+            letter-spacing: -2px;
+            max-width: 900px;
+        }
+
+        .hero__title .dim {
+            color: var(--text-50);
+        }
+
+        .hero__right {
+            text-align: right;
+            padding-bottom: 8px;
+        }
+
+        .hero__scroll {
+            font-size: 13px;
+            color: var(--text-50);
+            text-decoration: none;
+            font-weight: 400;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .hero__scroll-line {
+            width: 1px;
+            height: 40px;
+            background: var(--text-30);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero__scroll-line::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollLine {
+            0% { top: -100%; }
+            50% { top: 100%; }
+            100% { top: 100%; }
+        }
+
+        .hero__sub {
+            font-size: 17px;
+            color: var(--text-50);
+            max-width: 560px;
+            margin-top: 28px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .hero__ctas {
+            display: flex;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg);
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 40px rgba(0,229,160,0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-80);
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 14px 32px;
+            border-radius: 100px;
+            border: 1px solid var(--text-20);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-50);
+            color: var(--text-100);
+        }
+
+        .hero__copyright {
+            position: absolute;
+            bottom: 60px;
+            left: 40px;
+            font-size: 12px;
+            color: var(--text-30);
+        }
+
+        /* ─── SPLIT SECTION PATTERN ─── */
+        .split {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 60px;
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-top: 1px solid var(--border);
+        }
+
+        .split__label {
+            font-family: var(--font-display);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-50);
+            padding-top: 6px;
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+        }
+
+        .split__content {
+            max-width: 1000px;
+        }
+
+        /* ─── SECTION HEADINGS ─── */
+        .h2 {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 4.5vw, 62px);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .h3 {
+            font-family: var(--font-display);
+            font-size: clamp(24px, 3vw, 38px);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+        }
+
+        .body-lg {
+            font-size: 17px;
+            color: var(--text-50);
+            line-height: 1.75;
+            max-width: 600px;
+            font-weight: 300;
+        }
+
+        /* ─── PROBLEM SECTION ─── */
+        .problem-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 48px;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent);
+        }
+
+        .problem-card__title {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .problem-card__body {
+            font-size: 16px;
+            color: var(--text-50);
+            line-height: 1.8;
+        }
+
+        .problem-card__stat {
+            font-family: var(--font-display);
+            font-size: 64px;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+            line-height: 1;
+            margin: 24px 0 8px;
+        }
+
+        .problem-card__stat-label {
+            font-size: 14px;
+            color: var(--text-30);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* ─── BEFORE / AFTER ─── */
+        .compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            margin-top: 60px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .compare__col {
+            padding: 48px;
+            background: var(--bg-card);
+        }
+
+        .compare__col--before {
+            opacity: 0.5;
+        }
+
+        .compare__tag {
+            font-family: var(--font-display);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-30);
+            margin-bottom: 24px;
+        }
+
+        .compare__col:last-child .compare__tag {
+            color: var(--accent);
+        }
+
+        .compare__list {
+            list-style: none;
+        }
+
+        .compare__list li {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-80);
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .compare__list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .compare__col--before .compare__list li::before {
+            background: var(--text-30);
+        }
+
+        .compare__col:last-child .compare__list li::before {
+            background: var(--accent);
+        }
+
+        /* ─── STATS CAROUSEL ─── */
+        .stats-wrapper {
+            position: relative;
+            margin-top: 48px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2px;
+            border-radius: 16px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 8px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--text-20) transparent;
+        }
+
+        .stats::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .stats::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .stats::-webkit-scrollbar-thumb {
+            background: var(--text-20);
+            border-radius: 3px;
+        }
+
+        .stat {
+            background: var(--bg-card);
+            padding: 48px 32px;
+            text-align: center;
+            flex: 0 0 calc(25% - 1px);
+            min-width: 280px;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+
+        .stats-nav {
+            position: absolute;
+            right: 0;
+            top: -50px;
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .stats-btn {
+            background: var(--text-20);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--text-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .stats-btn:hover {
+            background: var(--text-50);
+        }
+
+        .stats-btn.active {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .stat__number {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 3.5vw, 52px);
+            font-weight: 800;
+            color: var(--text-100);
+            line-height: 1;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .stat__label {
+            font-size: 13px;
+            color: var(--text-30);
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        /* ─── FEATURES / SOLUTION GRID ─── */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            margin-top: 48px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .feature {
+            background: var(--bg-card);
+            padding: 48px;
+            position: relative;
+            transition: background 0.4s ease;
+        }
+
+        .feature:hover {
+            background: var(--bg-elevated);
+        }
+
+        .feature__number {
+            font-family: var(--font-display);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-20);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .feature__title {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.3;
+            letter-spacing: -0.3px;
+        }
+
+        .feature__body {
+            font-size: 15px;
+            color: var(--text-50);
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        /* ─── STEPS / ROADMAP ─── */
+        .steps {
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 48px;
+            background: var(--bg-card);
+            padding: 48px;
+            border-radius: 0;
+            position: relative;
+        }
+
+        .step:first-child { border-radius: 16px 16px 0 0; }
+        .step:last-child { border-radius: 0 0 16px 16px; }
+
+        .step__number {
+            font-family: var(--font-display);
+            font-size: clamp(48px, 5vw, 72px);
+            font-weight: 800;
+            color: var(--text-20);
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+
+        .step__title {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .step__body {
+            font-size: 15px;
+            color: var(--text-50);
+            line-height: 1.7;
+            font-weight: 300;
+            max-width: 600px;
+        }
+
+        .step__urgency {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            background: rgba(255,80,80,0.08);
+            border: 1px solid rgba(255,80,80,0.15);
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #ff6b6b;
+            font-weight: 500;
+        }
+
+        /* ─── FAQ ─── */
+        .faq__list {
+            margin-top: 48px;
+        }
+
+        .faq__item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq__trigger {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 0;
+            cursor: pointer;
+            user-select: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .faq__trigger:hover {
+            opacity: 0.7;
+        }
+
+        .faq__question {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 600;
+            padding-right: 40px;
+        }
+
+        .faq__icon {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--text-50);
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .faq__item.active .faq__icon {
+            transform: rotate(45deg);
+        }
+
+        .faq__answer {
+            height: 0;
+            overflow: hidden;
+            transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .faq__item.active .faq__answer {
+            opacity: 1;
+        }
+
+        .faq__answer-inner {
+            padding-bottom: 28px;
+            font-size: 15px;
+            color: var(--text-50);
+            line-height: 1.75;
+            max-width: 640px;
+            font-weight: 300;
+        }
+
+        /* ─── TEAM ─── */
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            margin-top: 48px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .team-card {
+            background: var(--bg-card);
+            padding: 48px;
+        }
+
+        .team-card__name {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .team-card__role {
+            font-size: 12px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .team-card__quote {
+            font-size: 15px;
+            color: var(--text-50);
+            line-height: 1.75;
+            font-style: italic;
+            font-weight: 300;
+            border-left: 2px solid var(--text-20);
+            padding-left: 20px;
+        }
+
+        .team-note {
+            margin-top: 32px;
+            font-size: 14px;
+            color: var(--text-30);
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        /* ─── FINAL CTA ─── */
+        .cta-final {
+            text-align: center;
+            padding: 120px 40px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .cta-final .h2 {
+            margin-bottom: 20px;
+        }
+
+        .cta-final .body-lg {
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        .cta-final__price {
+            font-family: var(--font-display);
+            font-size: 14px;
+            color: var(--text-30);
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        .cta-final__price strong {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer__left {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer__logo {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-100);
+            text-decoration: none;
+        }
+
+        .footer__logo span {
+            color: var(--accent);
+        }
+
+        .footer__copy {
+            font-size: 13px;
+            color: var(--text-30);
+        }
+
+        .footer__right {
+            font-size: 12px;
+            color: var(--text-20);
+            text-align: right;
+        }
+
+        /* ─── GRAIN / TEXTURE ─── */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
+
+        /* ─── SCROLL REVEALS ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .split {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 80px 24px;
+            }
+            .split__label {
+                position: static;
+            }
+            .stat {
+                flex: 0 0 calc(50% - 1px);
+                min-width: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav { padding: 16px 20px; }
+            .hero { padding: 0 20px 40px; }
+            .hero__wrap { grid-template-columns: 1fr; gap: 24px; }
+            .hero__right { display: none; }
+            .hero__ctas { flex-direction: column; }
+            .hero__ctas .btn-primary, .hero__ctas .btn-outline { width: 100%; justify-content: center; }
+            .compare { grid-template-columns: 1fr; }
+            .stat { flex: 0 0 calc(100% - 1px); min-width: 100%; }
+            .stats-nav { top: -45px; }
+            .features { grid-template-columns: 1fr; }
+            .step { grid-template-columns: 60px 1fr; gap: 24px; padding: 32px; }
+            .team-grid { grid-template-columns: 1fr; }
+            .footer { grid-template-columns: 1fr; text-align: center; }
+            .footer__right { text-align: center; }
+            .footer__left { align-items: center; }
+            .cta-final { padding: 80px 20px; }
+            .split { padding: 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <a href="#" class="nav__logo">monetize<span>.</span>global</a>
+        <div class="nav__center">
+            <span id="progress" class="nav__progress">0%</span>
+        </div>
+        <button class="nav__cta" onclick="handleCTA()">Claim founding spot</button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div>
+            <div class="hero__badge reveal">
+                <div class="hero__badge-dot"></div>
+                Founding members only
+            </div>
+            <div class="hero__wrap">
+                <div>
+                    <h1 class="hero__title reveal reveal-delay-1">
+                        Your DMs are leaving money on the table. 
+                        <span class="dim">Every single month.</span>
+                    </h1>
+                    <p class="hero__sub reveal reveal-delay-2">
+                        Every "Where did you get that?" is a lost transaction. Your followers are asking. Your AI should be selling.
+                    </p>
+                    <div class="hero__ctas reveal reveal-delay-3">
+                        <button class="btn-primary" onclick="handleCTA()">
+                            Secure founding spot
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <button class="btn-outline" onclick="document.getElementById('solution').scrollIntoView({behavior:'smooth'})">See how it works</button>
+                    </div>
+                </div>
+                <div class="hero__right">
+                    <a href="#problem" class="hero__scroll">
+                        <div class="hero__scroll-line"></div>
+                        scroll
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="split" id="problem">
+        <div class="split__label reveal">The Problem</div>
+        <div class="split__content">
+            <h2 class="h2 reveal">That $5K-$20K per month? <span class="dim">It's already in your DMs.</span></h2>
+
+            <div class="problem-card reveal reveal-delay-1">
+                <div class="problem-card__title">You just can't see it yet.</div>
+                <p class="problem-card__body">
+                    Followers ask "Where did you get that?" hundreds of times a week. You either ignore it and earn nothing, respond manually and earn nothing trackable, or watch the momentum die the second they leave the chat.
+                </p>
+                <span class="problem-card__stat" data-count="300">0</span>
+                <span class="problem-card__stat-label">Average DM product questions per week</span>
+            </div>
+
+            <div class="compare reveal">
+                <div class="compare__col compare__col--before">
+                    <div class="compare__tag">What happens now</div>
+                    <ul class="compare__list">
+                        <li>Follower asks "Where did you get that?"</li>
+                        <li>You respond at 3 PM. Or don't.</li>
+                        <li>They leave chat to hunt the product elsewhere</li>
+                        <li>Most abandon. Some find it. You never know.</li>
+                        <li>No attribution. No earnings. No data.</li>
+                    </ul>
+                </div>
+                <div class="compare__col">
+                    <div class="compare__tag">What changes</div>
+                    <ul class="compare__list">
+                        <li>Follower asks "Where did you get that?"</li>
+                        <li>monetize.global responds in 3 seconds. In your voice.</li>
+                        <li>Checkout happens before they change their mind.</li>
+                        <li>Every transaction traced back to the post that started it.</li>
+                        <li>You wake up to real revenue and real data.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARKET -->
+    <section class="split">
+        <div class="split__label reveal">The Market</div>
+        <div class="split__content">
+            <h2 class="h2 reveal">The market is ready. <span class="dim">Are you?</span></h2>
+            <div class="stats-wrapper reveal reveal-delay-1">
+                <div class="stats-nav">
+                    <button class="stats-btn" id="statsLeft" aria-label="Scroll left">&larr;</button>
+                    <button class="stats-btn" id="statsRight" aria-label="Scroll right">&rarr;</button>
+                </div>
+                <div class="stats" id="statsContainer">
+                    <div class="stat">
+                        <div class="stat__number" data-count-text="$2.5T+">$0</div>
+                        <div class="stat__label">Global social commerce, growing 40%+ annually</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat__number" data-count-text="500M+">0</div>
+                        <div class="stat__label">Instagram users asking creators about products</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat__number" data-count-text="67%">0</div>
+                        <div class="stat__label">Gen Z prefers buying from creators over brands</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat__number" data-count-text="$5K-$20K">$0</div>
+                        <div class="stat__label">Monthly opportunity cost per creator</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION -->
+    <section class="split" id="solution">
+        <div class="split__label reveal">The Solution</div>
+        <div class="split__content">
+            <h2 class="h2 reveal">AI that doesn't sound like AI. <span class="dim">We trained it on your voice.</span></h2>
+            <p class="body-lg reveal reveal-delay-1">Now it sells like you.</p>
+
+            <div class="features reveal reveal-delay-2">
+                <div class="feature">
+                    <div class="feature__number">(01)</div>
+                    <div class="feature__title">It speaks like you. Not like a robot.</div>
+                    <div class="feature__body">We trained our AI on your actual posts, DM patterns, and recommendation style. When a follower asks, they get an answer that sounds like it came from you at 2 AM.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature__number">(02)</div>
+                    <div class="feature__title">Your warmest audience is already here.</div>
+                    <div class="feature__body">They're not Googling. They're not browsing links. They messaged YOU asking for a recommendation. That's intent. We just remove the friction between intent and checkout.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature__number">(03)</div>
+                    <div class="feature__title">The sale happens where the trust is.</div>
+                    <div class="feature__body">DM is where your audience already trusts you. The moment they click a link, trust friction increases. We keep the sale inside the conversation. The momentum never dies.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature__number">(04)</div>
+                    <div class="feature__title">Revenue while you sleep. Actually.</div>
+                    <div class="feature__body">A follower asks at 2 AM on a Wednesday. Your AI answers in 3 seconds. They check out in your DMs before scrolling to the next post. Repeat this 50 times a month.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature__number">(05)</div>
+                    <div class="feature__title">Stop guessing. Start measuring.</div>
+                    <div class="feature__body">See which post triggered the sale, which products convert, revenue per follower segment, time-to-checkout. When a brand asks "What's the ROI?" you'll have the answer.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature__number">(06)</div>
+                    <div class="feature__title">Built for you. Not for everyone.</div>
+                    <div class="feature__body">ManyChat does 50 things for agencies. We do one thing perfectly: turn DMs into revenue. No workflows to master. No automation you'll never use. Follower asks. AI sells. You earn.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="split">
+        <div class="split__label reveal">Roadmap</div>
+        <div class="split__content">
+            <h2 class="h2 reveal">From idea to assets <span class="dim">in four phases.</span></h2>
+            <p class="body-lg reveal reveal-delay-1">Join now and lock in founding member pricing before the jump.</p>
+
+            <div class="steps reveal reveal-delay-2">
+                <div class="step">
+                    <div class="step__number">01</div>
+                    <div>
+                        <div class="step__title">Now: Founding Member Phase</div>
+                        <div class="step__body">
+                            We're locking in early creators at $299/month while refining performance across categories and working with select creators to nail the fundamentals.
+                        </div>
+                        <div class="step__urgency">Q2 2026 pricing: $799/month. Get in before the jump.</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step__number">02</div>
+                    <div>
+                        <div class="step__title">Q2 2026: Scale & Integration</div>
+                        <div class="step__body">
+                            Integrating with Shopify, TikTok Shop, and DTC platforms. First flagship creators with 1M+ followers going live.
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step__number">03</div>
+                    <div>
+                        <div class="step__title">Q3 2026: Own the Category</div>
+                        <div class="step__body">
+                            Publishing industry-first DM-commerce benchmarks. Conversion rates, AOV, time-to-checkout by category. Positioning as the standard creators reference.
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step__number">04</div>
+                    <div>
+                        <div class="step__title">Beyond: The Creator Revenue OS</div>
+                        <div class="step__body">
+                            Multi-channel: DMs, Stories, Comments, Feed, Reels. One dashboard. One AI. Creators activate revenue anywhere their audience hangs out.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="split">
+        <div class="split__label reveal">FAQs</div>
+        <div class="split__content">
+            <h2 class="h2 reveal">Real answers. <span class="dim">Not marketing fluff.</span></h2>
+
+            <div class="faq__list reveal reveal-delay-1">
+                <div class="faq__item">
+                    <div class="faq__trigger">
+                        <div class="faq__question">What exactly does monetize.global do?</div>
+                        <div class="faq__icon">+</div>
+                    </div>
+                    <div class="faq__answer">
+                        <div class="faq__answer-inner">We place an AI assistant in your Instagram DMs that sounds like you, responds to product questions instantly, and converts conversations into tracked revenue. Think of it as you, but available 24/7 and closing sales while you sleep.</div>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <div class="faq__trigger">
+                        <div class="faq__question">Will it actually sound like me?</div>
+                        <div class="faq__icon">+</div>
+                    </div>
+                    <div class="faq__answer">
+                        <div class="faq__answer-inner">Yes. We train the voice model on your existing posts, DM patterns, and recommendation style. The difference between our AI and a template chatbot is in the pauses, tone variation, and knowing when NOT to be salesy. Your followers won't know the difference.</div>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <div class="faq__trigger">
+                        <div class="faq__question">How is this different from ManyChat?</div>
+                        <div class="faq__icon">+</div>
+                    </div>
+                    <div class="faq__answer">
+                        <div class="faq__answer-inner">ManyChat is an automation platform built for marketing agencies. We do one thing perfectly: turn DM product questions into revenue. No workflows to set up, no automation trees. Your follower asks, the AI recommends in your voice, checkout happens in-thread.</div>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <div class="faq__trigger">
+                        <div class="faq__question">What data will I see?</div>
+                        <div class="faq__icon">+</div>
+                    </div>
+                    <div class="faq__answer">
+                        <div class="faq__answer-inner">Which Instagram post triggered each sale, which products your audience actually buys, revenue per follower segment, and time-to-checkout. When a brand asks "What's the ROI?" you'll have the receipts.</div>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <div class="faq__trigger">
+                        <div class="faq__question">What does founding membership include?</div>
+                        <div class="faq__icon">+</div>
+                    </div>
+                    <div class="faq__answer">
+                        <div class="faq__answer-inner">$299/month locked in permanently, direct access to our founding team, priority feature requests, and your rate never increases. Standard pricing goes to $799/month in Q2 2026.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="split">
+        <div class="split__label reveal">The Team</div>
+        <div class="split__content">
+            <h2 class="h2 reveal">Built by creators, <span class="dim">for creators.</span></h2>
+
+            <div class="team-grid reveal reveal-delay-1">
+                <div class="team-card">
+                    <div class="team-card__name">Mia Than</div>
+                    <div class="team-card__role">Co-Founder, Strategy</div>
+                    <div class="team-card__quote">
+                        "Creators are leaving 85% of their potential DM revenue on the table because they're treating conversations like customer service, not sales. We're flipping that."
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-card__name">Jamie Brough</div>
+                    <div class="team-card__role">Co-Founder, CTO</div>
+                    <div class="team-card__quote">
+                        "The difference between an AI that feels like a brand and an AI that feels like a person is in the pauses, the tone variation, and knowing when NOT to optimize for speed."
+                    </div>
+                </div>
+            </div>
+            <p class="team-note reveal reveal-delay-2">Two everyday people who realized: creators have the warmest audiences on Earth, but they're using tools built for agencies. So we built the opposite.</p>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="cta-final">
+        <h2 class="h2 reveal">Your DMs close sales. <br><span class="dim">Let's prove it.</span></h2>
+        <p class="body-lg reveal reveal-delay-1">
+            Every "Where did you get that?" is already a buyer. Don't make them leave the conversation. Join founding members turning DMs into real income.
+        </p>
+        <button class="btn-primary reveal reveal-delay-2" onclick="handleCTA()" style="font-size:16px; padding: 18px 40px;">
+            Claim your founding spot ($299/mo)
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="cta-final__price reveal reveal-delay-3">
+            <strong>Price increases to $799/month in Q2.</strong> Limited founding spots. No refunds after onboarding.
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer__left">
+            <a href="#" class="footer__logo">monetize<span>.</span>global</a>
+            <div class="footer__copy">&copy; 2026, monetize.global. All rights reserved.</div>
+        </div>
+        <div class="footer__right">Built in Miami, powered by creators.</div>
+    </footer>
+
+    <script>
+        // ─── STATS CAROUSEL ───
+        const statsContainer = document.getElementById('statsContainer');
+        const statsLeftBtn = document.getElementById('statsLeft');
+        const statsRightBtn = document.getElementById('statsRight');
+
+        if (statsContainer && statsLeftBtn && statsRightBtn) {
+            const scrollAmount = 320; // stat width + gap
+
+            statsLeftBtn.addEventListener('click', () => {
+                statsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            statsRightBtn.addEventListener('click', () => {
+                statsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            // Update button visibility based on scroll position
+            function updateScrollButtons() {
+                const isAtStart = statsContainer.scrollLeft === 0;
+                const isAtEnd = statsContainer.scrollLeft >= statsContainer.scrollWidth - statsContainer.clientWidth - 10;
+                
+                statsLeftBtn.style.opacity = isAtStart ? '0.3' : '1';
+                statsLeftBtn.style.pointerEvents = isAtStart ? 'none' : 'auto';
+                statsRightBtn.style.opacity = isAtEnd ? '0.3' : '1';
+                statsRightBtn.style.pointerEvents = isAtEnd ? 'none' : 'auto';
+            }
+
+            statsContainer.addEventListener('scroll', updateScrollButtons);
+            window.addEventListener('resize', updateScrollButtons);
+            updateScrollButtons();
+        }
+
+        // ─── SCROLL PROGRESS ───
+        const progressEl = document.getElementById('progress');
+        function updateProgress() {
+            const scrolled = Math.min(Math.max(
+                (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100, 0
+            ), 100);
+            progressEl.textContent = Math.round(scrolled) + '%';
+            requestAnimationFrame(updateProgress);
+        }
+        updateProgress();
+
+        // ─── SCROLL REVEALS ───
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ─── FAQ ACCORDION ───
+        document.querySelectorAll('.faq__trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const item = trigger.closest('.faq__item');
+                const answer = item.querySelector('.faq__answer');
+                const isOpen = item.classList.contains('active');
+
+                // Close all others
+                document.querySelectorAll('.faq__item').forEach(other => {
+                    if (other !== item) {
+                        other.classList.remove('active');
+                        const otherAnswer = other.querySelector('.faq__answer');
+                        otherAnswer.style.height = '0px';
+                    }
+                });
+
+                if (!isOpen) {
+                    item.classList.add('active');
+                    answer.style.height = answer.scrollHeight + 'px';
+                } else {
+                    item.classList.remove('active');
+                    answer.style.height = '0px';
+                }
+            });
+        });
+
+        // ─── STAT COUNTER ANIMATION ───
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const finalText = el.getAttribute('data-count-text');
+                    if (finalText) {
+                        setTimeout(() => { el.textContent = finalText; }, 400);
+                        statObserver.unobserve(el);
+                        return;
+                    }
+                    const target = parseInt(el.getAttribute('data-count'));
+                    if (!target) return;
+                    let current = 0;
+                    const step = Math.ceil(target / 40);
+                    const interval = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            el.textContent = target + '+';
+                            clearInterval(interval);
+                        } else {
+                            el.textContent = current;
+                        }
+                    }, 30);
+                    statObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('[data-count], [data-count-text]').forEach(el => statObserver.observe(el));
+
+        // ─── CTA HANDLER ───
+        function handleCTA() {
+            console.log('CTA clicked - route to signup form');
+        }
+
+        // ─── NAV HIDE ON SCROLL DOWN ───
+        let lastScroll = 0;
+        const nav = document.querySelector('.nav');
+        window.addEventListener('scroll', () => {
+            const current = window.scrollY;
+            if (current > lastScroll && current > 200) {
+                nav.style.transform = 'translateY(-100%)';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
+            lastScroll = current;
+        }, { passive: true });
+    </script>
+</body>
+</html>
