@@ -6,221 +6,288 @@
     <title>monetize.global - Turn DMs Into Revenue</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Backgrounds */
+            /* Palette */
             --bg: #FFFFFF;             
-            --bg-elevated: #F4F4F4;    /* Slightly darker for better section definition */
+            --bg-elevated: #F9F9F9;    
             --bg-card: #FFFFFF;        
-            
-            /* Fourmula.ai Signature Orange */
             --accent: #F94A00;         
-            --accent-dim: rgba(249, 74, 0, 0.1);
+            --accent-soft: #FFF1EB;
             
-            /* Typography (WCAG AA Compliant) */
-            --text-100: #0B0B0B;       /* Black for Headings */
-            --text-80: #2D2D2D;        /* Dark Grey for Body */
-            --text-50: #555555;        /* Mid Grey (Darkened for AA compliance) */
-            --text-30: #888888;        /* Light Grey (Darkened for better visibility) */
-            --text-20: #D1D1D1;        /* Borders / Rules */
-            
-            /* Borders: Optimized for White Background Visibility */
-            --border: rgba(0, 0, 0, 0.12);
+            /* Typography */
+            --text-main: #0B0B0B;      
+            --text-muted: #666666;      
+            --text-dim: #A0A0A0;        
+            --border: rgba(0, 0, 0, 0.08);
 
             --font-display: 'Syne', sans-serif;
             --font-body: 'DM Sans', sans-serif;
+            
+            --container: 1400px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html {
             scroll-behavior: smooth;
-            scrollbar-width: thin;
-            scrollbar-color: var(--text-20) transparent;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
             font-family: var(--font-body);
             background: var(--bg);
-            color: var(--text-100);
-            line-height: 1.6;
+            color: var(--text-main);
+            line-height: 1.5;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
         }
 
-        /* Focus States for Accessibility */
-        :focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 4px;
+        /* ─── UI ELEMENTS ─── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: 100px;
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            border: none;
         }
 
-        /* ─── NAV ─── */
+        .btn-primary {
+            background: var(--text-main);
+            color: #FFF;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(249, 74, 0, 0.15);
+        }
+
+        .badge {
+            display: inline-flex;
+            padding: 6px 14px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+        }
+
+        /* ─── NAVIGATION ─── */
         .nav {
             position: fixed;
             top: 0; left: 0; right: 0;
-            z-index: 100;
-            padding: 20px 40px;
+            z-index: 1000;
+            padding: 24px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255,255,255,0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .nav__logo {
             font-family: var(--font-display);
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-100);
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-main);
             text-decoration: none;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.5px;
         }
 
         .nav__logo span { color: var(--accent); }
 
-        .nav__cta {
-            background: var(--text-100); /* Darker CTA for light mode premium feel */
-            color: #FFF;
-            text-decoration: none;
-            font-family: var(--font-display);
-            font-size: 13px;
-            font-weight: 600;
-            padding: 10px 24px;
-            border-radius: 100px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .nav__cta:hover {
-            background: var(--accent);
-            transform: scale(1.02);
-        }
-
-        /* ─── HERO ─── */
+        /* ─── HERO SECTION ─── */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 120px 40px 60px;
-        }
-
-        .hero__badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-50);
-            margin-bottom: 32px;
+            padding: 200px 40px 120px;
+            max-width: var(--container);
+            margin: 0 auto;
+            text-align: left;
         }
 
         .hero__title {
             font-family: var(--font-display);
-            font-size: clamp(40px, 7vw, 90px);
+            font-size: clamp(48px, 8vw, 110px);
             font-weight: 800;
-            line-height: 0.95;
-            letter-spacing: -3px;
-            max-width: 1100px;
-            margin-bottom: 30px;
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            margin-bottom: 40px;
         }
 
-        .hero__title .dim { color: var(--text-30); }
+        .hero__title span { display: block; }
+        .hero__title .dim { color: var(--text-dim); }
 
-        /* ─── SPLIT SECTIONS ─── */
-        .split {
+        .hero__description {
+            font-size: clamp(18px, 2vw, 24px);
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 48px;
+            font-weight: 400;
+        }
+
+        /* ─── LAYOUT: THE SPLIT ─── */
+        .section-split {
             display: grid;
-            grid-template-columns: 240px 1fr;
-            gap: 60px;
+            grid-template-columns: 300px 1fr;
+            gap: 80px;
             padding: 120px 40px;
-            max-width: 1400px;
+            max-width: var(--container);
             margin: 0 auto;
             border-top: 1px solid var(--border);
         }
 
-        .split__label {
-            font-family: var(--font-display);
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-30);
+        .section-split__label {
             position: sticky;
             top: 120px;
             height: fit-content;
-        }
-
-        /* ─── CARDS & FEATURES ─── */
-        .problem-card, .feature, .step, .team-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 40px;
-            transition: all 0.3s ease;
-        }
-
-        .feature:hover {
-            border-color: var(--accent);
-            background: #FFFAF8; /* Very subtle orange tint */
+            font-family: var(--font-display);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-dim);
         }
 
         .h2 {
             font-family: var(--font-display);
-            font-size: clamp(30px, 4vw, 56px);
-            font-weight: 800;
+            font-size: clamp(32px, 5vw, 64px);
             line-height: 1.1;
-            letter-spacing: -1.5px;
-            margin-bottom: 40px;
+            letter-spacing: -0.02em;
+            margin-bottom: 60px;
         }
 
-        /* ─── GRID SYSTEMS ─── */
-        .features, .team-grid {
+        /* ─── FEATURE GRID ─── */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
         }
 
-        /* ─── RESPONSIVENESS (MOBILE) ─── */
-        @media (max-width: 1024px) {
-            .split {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                padding: 80px 24px;
-            }
-            .split__label { position: static; margin-bottom: 20px; }
+        .card {
+            padding: 48px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            transition: all 0.4s ease;
         }
 
-        @media (max-width: 768px) {
-            .nav { padding: 15px 20px; }
-            .hero { padding: 100px 20px 40px; }
-            .hero__title { letter-spacing: -1px; }
-            .features, .team-grid { grid-template-columns: 1fr; }
-            .problem-card, .feature, .step, .team-card { padding: 30px 20px; }
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
         }
 
-        /* ─── GRAIN OVERLAY ─── */
-        body::after {
-            content: '';
+        .card__icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-soft);
+            border-radius: 12px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+        }
+
+        .card h3 {
+            font-family: var(--font-display);
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        /* ─── NOISE TEXTURE ─── */
+        body::before {
+            content: "";
             position: fixed;
-            inset: 0;
-            pointer-events: none;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.03;
             z-index: 9999;
-            opacity: 0.04;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .section-split { grid-template-columns: 1fr; gap: 40px; }
+            .section-split__label { position: static; }
+            .nav { padding: 20px; }
+            .hero { padding: 160px 20px 80px; }
         }
     </style>
 </head>
 <body>
-    </body>
+
+    <nav class="nav">
+        <a href="#" class="nav__logo">monetize<span>.global</span></a>
+        <a href="#join" class="btn btn-primary">Start Earning</a>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="badge">Beta Access Now Open</div>
+            <h1 class="hero__title">
+                <span>Turn your DMs</span>
+                <span class="dim">Into Pure Revenue.</span>
+            </h1>
+            <p class="hero__description">
+                The world’s first automated conversion layer for high-ticket creators. Stop losing leads to the "seen" receipt.
+            </p>
+            <div class="hero__actions">
+                <a href="#join" class="btn btn-primary">Claim your handle</a>
+            </div>
+        </section>
+
+        <section class="section-split">
+            <aside class="section-split__label">01 / The Problem</aside>
+            <div class="section-split__content">
+                <h2 class="h2">Attention is expensive.<br>Don't let it leak.</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card__icon">⚡</div>
+                        <h3>Instant Response</h3>
+                        <p>Our AI triggers the moment a prospect hits your inbox, qualifying them in seconds while they are hot.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card__icon">💰</div>
+                        <h3>Frictionless Pay</h3>
+                        <p>Generate secure checkout links directly inside the chat. No external sites, no drop-offs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-split">
+            <aside class="section-split__label">02 / Ecosystem</aside>
+            <div class="section-split__content">
+                <h2 class="h2">Built for the<br>Modern Creator.</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Strategy</h3>
+                        <p>Frameworks used by 7-figure creators to bridge the gap between content and cashflow.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Automation</h3>
+                        <p>Complex workflows simplified into a single dashboard. Manage IG, X, and LinkedIn in one place.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
 </html>
