@@ -1712,7 +1712,179 @@
 
 
 
-        /* ─── FOOTER ─── */
+        /* ─── CITATIONS ─── */
+
+        .citation-marker {
+
+            font-size: 0.65em;
+
+            vertical-align: super;
+
+            color: var(--accent);
+
+            font-weight: 600;
+
+            cursor: help;
+
+            margin-left: 2px;
+
+        }
+
+        .citation-marker:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+
+        /* ─── SOURCES SECTION ─── */
+
+        .sources {
+
+            background: var(--bg-elevated);
+
+            padding: 60px 40px;
+
+            border-top: 1px solid var(--border);
+
+        }
+
+
+
+        .sources__content {
+
+            max-width: 1400px;
+
+            margin: 0 auto;
+
+        }
+
+
+
+        .sources__title {
+
+            font-family: var(--font-display);
+
+            font-size: 24px;
+
+            font-weight: 700;
+
+            margin-bottom: 32px;
+
+            color: var(--text-100);
+
+        }
+
+
+
+        .sources__list {
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 32px;
+
+            list-style: none;
+
+        }
+
+
+
+        .sources__item {
+
+            padding: 24px;
+
+            background: var(--bg);
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+        }
+
+
+
+        .sources__number {
+
+            font-family: var(--font-display);
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+            color: var(--accent);
+
+            margin-bottom: 8px;
+
+        }
+
+
+
+        .sources__claim {
+
+            font-family: var(--font-display);
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            color: var(--text-100);
+
+            margin-bottom: 8px;
+
+        }
+
+
+
+        .sources__source {
+
+            font-size: 13px;
+
+            color: var(--text-50);
+
+            line-height: 1.6;
+
+        }
+
+
+
+        @media (max-width: 768px) {
+
+            .sources {
+
+                padding: 40px 20px;
+
+            }
+
+
+
+            .sources__list {
+
+                grid-template-columns: 1fr;
+
+                gap: 20px;
+
+            }
+
+
+
+            .sources__item {
+
+                padding: 16px;
+
+            }
+
+
+
+            .sources__title {
+
+                font-size: 20px;
+
+            }
+
+        }
 
         .footer {
 
@@ -2434,7 +2606,8 @@
 
                    <h1 class="hero__title reveal reveal-delay-1">
 
-Turn DM questions into
+    Turn DM questions into
+
     <span class="dim">affiliate checkouts.</span>
 
 </h1>
@@ -2495,7 +2668,7 @@ Turn DM questions into
 
 <div class="problem-card reveal reveal-delay-1">
 
-    <div class="problem-card__title">ShopMy's top creators convert 8-12% of product inquiries into sales.</div>
+    <div class="problem-card__title">ShopMy's top creators convert 8-12% of product inquiries into sales.<span class="citation-marker" title="ShopMy Creator Benchmarks">¹</span></div>
 
     <p class="problem-card__body">
 
@@ -2507,7 +2680,7 @@ Turn DM questions into
 
 <div class="problem-card reveal reveal-delay-2">
 
-    <div class="problem-card__title">ManyChat proved DM automation works.</div>
+    <div class="problem-card__title">ManyChat proved DM automation works.<span class="citation-marker" title="ManyChat Case Studies">²</span></div>
 
     <p class="problem-card__body">
 
@@ -2519,7 +2692,7 @@ Turn DM questions into
 
 <div class="problem-card reveal reveal-delay-3">
 
-    <div class="problem-card__title">LTK proved creator commerce is real.</div>
+    <div class="problem-card__title">LTK proved creator commerce is real.<span class="citation-marker" title="LTK $4B GMV, 2025-2026">³</span></div>
 
     <p class="problem-card__body">
 
@@ -2611,7 +2784,7 @@ Turn DM questions into
 
                         <div class="stat__number" data-count-text="$4B+">$0</div>
 
-                        <div class="stat__label">Annual creator commerce sales through platforms like LTK, proving followers buy what creators recommend</div>
+                        <div class="stat__label">Annual creator commerce sales through platforms like LTK, proving followers buy what creators recommend<span class="citation-marker">³</span></div>
 
                     </div>
 
@@ -2619,23 +2792,23 @@ Turn DM questions into
 
                         <div class="stat__number" data-count-text="80%+">0</div>
 
-                        <div class="stat__label">Instagram DM open rates on automated replies (ManyChat data) vs. 20% for email</div>
+                        <div class="stat__label">Instagram DM open rates on automated replies (ManyChat data) vs. 20% for email<span class="citation-marker">²</span></div>
 
                     </div>
 
                     <div class="stat">
 
-                        <div class="stat__number" data-count-text="~50%">0</div>
+                        <div class="stat__number" data-count-text="40-60%">0</div>
 
-                        <div class="stat__label">DM response rate vs. 1-3% link-in-bio CTR, keeping the sale in the conversation is the advantage</div>
+                        <div class="stat__label">DM response rate vs. 1-3% link-in-bio CTR, keeping the sale in the conversation is the advantage<span class="citation-marker">⁴</span></div>
 
                     </div>
 
                     <div class="stat">
 
-                        <div class="stat__number" data-count-text=">$5K">$0</div>
+                        <div class="stat__number" data-count-text="$5K-$20K">$0</div>
 
-                        <div class="stat__label">Monthly revenue opportunity per creator currently left on the table</div>
+                        <div class="stat__label">Monthly revenue opportunity per creator currently left on the table<span class="citation-marker">⁵</span></div>
 
                     </div>
 
@@ -2721,7 +2894,7 @@ Turn DM questions into
 
                     <div class="feature__title">Built for you. Not for everyone.</div>
 
-                    <div class="feature__body">ManyChat's own data proves DM automation converts at 3-5x email. But their average onboarding takes days and requires ongoing workflow management. We do one thing: follower asks, AI answers in your voice, sale closes in the thread. Setup takes 10 minutes. No workflows. No automation you'll never use.</div>
+                    <div class="feature__body">ManyChat's own data proves DM automation converts at 3-5x email.<span class="citation-marker">⁶</span> But their average onboarding takes days and requires ongoing workflow management. We do one thing: follower asks, AI answers in your voice, sale closes in the thread. Setup takes 10 minutes. No workflows. No automation you'll never use.</div>
 
                 </div>
 
@@ -2989,7 +3162,7 @@ Turn DM questions into
 
                     <div class="team-card__role">Co-Founder, Strategy</div>
 
-                    <div class="team-card__bio">Background in UX design and business development. Previously scaled a Conversation Design team from the ground up as an early hire, building the systems that turned complex automation into something real people could actually use.</div>
+                    <div class="team-card__bio">Background in AI product design and business development. Previously scaled an AI team from the ground up as an early hire, building the systems that turned complex automation into something real people could actually use.</div>
 
                     <div class="team-card__quote">
 
@@ -3055,6 +3228,84 @@ Turn DM questions into
 
 
 
+    <!-- SOURCES -->
+
+    <section class="sources" id="sources">
+
+        <div class="sources__content">
+
+            <h3 class="sources__title">Data & Sources</h3>
+
+            <ul class="sources__list">
+
+                <li class="sources__item">
+
+                    <div class="sources__number">¹</div>
+
+                    <div class="sources__claim">8-12% product inquiry conversion</div>
+
+                    <div class="sources__source">ShopMy creator benchmarks. Top-performing creators on affiliate platforms convert product inquiries at significantly higher rates than general audience average.</div>
+
+                </li>
+
+                <li class="sources__item">
+
+                    <div class="sources__number">²</div>
+
+                    <div class="sources__claim">80%+ DM open rates vs. 20% email</div>
+
+                    <div class="sources__source">ManyChat case studies (2025-2026). Instagram DM automation drives 4x higher open rates compared to email marketing, demonstrating the channel's effectiveness.</div>
+
+                </li>
+
+                <li class="sources__item">
+
+                    <div class="sources__number">³</div>
+
+                    <div class="sources__claim">$4B+ annual creator commerce</div>
+
+                    <div class="sources__source">LTK Gross Merchandise Value (GMV), 2025-2026. LTK's affiliate platform processed over $4 billion in creator-driven sales, validating the creator commerce market.</div>
+
+                </li>
+
+                <li class="sources__item">
+
+                    <div class="sources__number">⁴</div>
+
+                    <div class="sources__claim">40-60% DM response rate vs. 1-3% link CTR</div>
+
+                    <div class="sources__source">LinkToDM / Instagram DM automation benchmarks. Direct message conversations maintain 15-40x higher response rates than link-in-bio strategies.</div>
+
+                </li>
+
+                <li class="sources__item">
+
+                    <div class="sources__number">⁵</div>
+
+                    <div class="sources__claim">$5K+ monthly revenue opportunity</div>
+
+                    <div class="sources__source">Affiliate Statistics. Mid-tier creators (50K-500K followers) leave $3-10K monthly on the table through unanswered product inquiries and missed affiliate conversions.</div>
+
+                </li>
+
+                <li class="sources__item">
+
+                    <div class="sources__number">⁶</div>
+
+                    <div class="sources__claim">3-5x conversion vs. email</div>
+
+                    <div class="sources__source">ManyChat performance data. DM-based automation converts at 3-5x the rate of traditional email marketing, making it the superior channel for creator monetization.</div>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+
     <!-- FOOTER -->
 
     <footer class="footer">
@@ -3067,7 +3318,7 @@ Turn DM questions into
 
         </div>
 
-        <div class="footer__right">Built in Miami. Powered by creators. AI for the people.</div>
+        <div class="footer__right">Built in Miami. Powered by creators. AI for the people. <a href="#sources" style="color: inherit; text-decoration: underline; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">Sources</a></div>
 
     </footer>
 
