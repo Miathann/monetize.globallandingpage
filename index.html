@@ -528,6 +528,20 @@
 
 
 
+        .hero__cta-copy {
+
+            font-size: 13px;
+
+            color: rgba(255, 255, 255, 0.7);
+
+            font-weight: 300;
+
+            margin-top: 12px;
+
+        }
+
+
+
         .btn-primary {
 
             background: var(--accent);
@@ -1192,6 +1206,16 @@
 
 
 
+        .stat:nth-child(3) .stat__number,
+
+        .stat:nth-child(4) .stat__number {
+
+            font-size: clamp(18px, 1.8vw, 32px);
+
+        }
+
+
+
         /* ─── FEATURES / SOLUTION GRID ─── */
 
         .features {
@@ -1544,7 +1568,7 @@
 
             display: grid;
 
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
 
             gap: 2px;
 
@@ -1594,7 +1618,39 @@
 
             font-weight: 500;
 
-            margin-bottom: 24px;
+            margin-bottom: 12px;
+
+        }
+
+
+
+        .team-card__link {
+
+            display: inline-block;
+
+            font-size: 11px;
+
+            color: var(--accent);
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            padding-bottom: 2px;
+
+            border-bottom: 1px solid var(--accent);
+
+            margin-bottom: 12px;
+
+            transition: opacity 0.3s ease;
+
+        }
+
+
+
+        .team-card__link:hover {
+
+            opacity: 0.7;
 
         }
 
@@ -2059,6 +2115,12 @@
             .stats-nav {
 
                 top: -48px;
+
+            }
+
+            .team-grid {
+
+                grid-template-columns: repeat(2, 1fr);
 
             }
 
@@ -2580,7 +2642,7 @@
 
         </div>
 
-        <button class="nav__cta" onclick="handleCTA()">Claim founding spot</button>
+        <button class="nav__cta" onclick="handleCTA()">Get Beta Access</button>
 
     </nav>
 
@@ -2606,9 +2668,9 @@
 
                    <h1 class="hero__title reveal reveal-delay-1">
 
-    Turn DM questions into
+    Make Money From Every DM You Receive.
 
-    <span class="dim">affiliate checkouts.</span>
+    <span class="dim">Instantly.</span>
 
 </h1>
 
@@ -2622,13 +2684,19 @@
 
     <button class="btn-primary" onclick="handleCTA()">
 
-        Claim your founding spot - $45/month
+        Start My DM Revenue Now
 
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
 
     </button>
 
     <button class="btn-outline" onclick="document.getElementById('solution').scrollIntoView({behavior:'smooth'})">See how it works</button>
+
+</div>
+
+<div class="hero__cta-copy reveal reveal-delay-3" style="margin-top: 16px; font-size: 13px; color: rgba(255,255,255,0.7);">
+
+    Just $45/month. Early pricing locked in for founding members.
 
 </div>
 
@@ -3012,6 +3080,42 @@
 
 
 
+    <!-- MID-PAGE CTA -->
+
+    <section class="split">
+
+        <div class="split__label reveal">Ready</div>
+
+        <div class="split__content">
+
+            <h2 class="h2 reveal">Stop losing sales to friction.</h2>
+
+            <p class="body-lg reveal reveal-delay-1">Your followers are ready to buy. Your AI should be ready to close.</p>
+
+            <div class="reveal reveal-delay-2" style="margin-top: 40px;">
+
+                <button class="btn-primary" onclick="handleCTA()" style="font-size: 15px; padding: 16px 36px;">
+
+                    Reserve My Founding Spot
+
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+                </button>
+
+                <div style="margin-top: 12px; font-size: 13px; color: var(--text-30);">
+
+                    Limited founding spots. $45/month locked in for life.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
     <!-- FAQ -->
 
     <section class="split">
@@ -3158,15 +3262,15 @@
 
                 <div class="team-card">
 
-                    <div class="team-card__name">Mia Than</div>
+                    <div class="team-card__name">Chris Napoli</div>
 
-                    <div class="team-card__role">Co-Founder, Strategy</div>
+                    <div class="team-card__role">Co-Founder, CEO</div>
 
-                    <div class="team-card__bio">Background in AI product design and business development. Previously scaled an AI team from the ground up as an early hire, building the systems that turned complex automation into something real people could actually use.</div>
+                    <div class="team-card__bio">Built multiple tech products from 0 to acquisition. Spent the last year embedding in the creator ecosystem, identifying the exact moment creators lose revenue to friction.</div>
 
                     <div class="team-card__quote">
 
-                        "There is so much untapped potential sitting in a creator's inbox. We aren't just building another tool. We're giving people back their time so they can focus on the one thing AI can't do: being themselves."
+                        "Every creator thinks it's a personality problem when they lose a sale. It's not. It's a tool problem. This fills it."
 
                     </div>
 
@@ -3183,6 +3287,22 @@
                     <div class="team-card__quote">
 
                         "I've spent my career watching how code can empower the few. Now, we are shifting that power. We are building the infrastructure that allows everyone to be a creator by turning complex automation into a simple, profitable conversation."
+
+                    </div>
+
+                </div>
+
+                <div class="team-card">
+
+                    <div class="team-card__name">Mia Than</div>
+
+                    <div class="team-card__role">Co-Founder, Strategy</div>
+
+                    <div class="team-card__bio">Background in UX/UI design and business development. Previously scaled an AI team from the ground up as an early hire, building the systems that turned complex automation into something real people could actually use.</div>
+
+                    <div class="team-card__quote">
+
+                        "There is so much untapped potential sitting in a creator's inbox. We aren't just building another tool. We're giving people back their time so they can focus on the one thing AI can't do: being themselves."
 
                     </div>
 
@@ -3212,7 +3332,7 @@
 
         <button class="btn-primary reveal reveal-delay-2" onclick="handleCTA()" style="font-size:16px; padding: 18px 40px;">
 
-            Claim your founding spot ($45/mo)
+            Reserve My Founding Spot
 
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
 
@@ -3220,7 +3340,7 @@
 
         <div class="cta-final__price reveal reveal-delay-3">
 
-            <strong>Price increases to $99/month in Q4 2026.</strong> Limited founding spots. Founding memberships are non-refundable after onboarding. We're working with serious creators only.
+            <strong>$45/month locked in for beta users.</strong> Limited founding spots. Founding memberships are non-refundable after onboarding. We're working with serious creators only.
 
         </div>
 
