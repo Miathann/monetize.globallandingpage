@@ -276,9 +276,15 @@
 
             position: relative;
 
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('hero-image.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('hero-image.jpg');
 
             background-attachment: fixed;
+
+            background-position: center center;
+
+            background-size: cover;
+
+            background-repeat: no-repeat;
 
         }
 
@@ -1900,6 +1906,8 @@
 
                 min-height: 80vh;
 
+                background-attachment: scroll;
+
             }
 
             .hero__wrap { 
@@ -2179,6 +2187,8 @@
                 padding: 0 16px 32px;
 
                 min-height: 70vh;
+
+                background-attachment: scroll;
 
             }
 
