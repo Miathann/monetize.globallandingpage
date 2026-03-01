@@ -6,26 +6,23 @@
     <title>monetize.global - Turn DMs Into Revenue</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Palette */
             --bg: #FFFFFF;             
-            --bg-elevated: #F9F9F9;    
+            --bg-elevated: #F4F4F4;    
             --bg-card: #FFFFFF;        
             --accent: #F94A00;         
-            --accent-soft: #FFF1EB;
-            
-            /* Typography */
-            --text-main: #0B0B0B;      
-            --text-muted: #666666;      
-            --text-dim: #A0A0A0;        
+            --accent-dim: rgba(249, 74, 0, 0.1);
+            --text-100: #0B0B0B;       
+            --text-80: #2D2D2D;        
+            --text-50: #555555;        
+            --text-30: #888888;        
+            --text-20: #D1D1D1;        
             --border: rgba(0, 0, 0, 0.08);
-
             --font-display: 'Syne', sans-serif;
             --font-body: 'DM Sans', sans-serif;
-            
-            --container: 1400px;
+            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,52 +35,12 @@
         body {
             font-family: var(--font-body);
             background: var(--bg);
-            color: var(--text-main);
-            line-height: 1.5;
+            color: var(--text-100);
+            line-height: 1.4;
             overflow-x: hidden;
         }
 
-        /* ─── UI ELEMENTS ─── */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 32px;
-            border-radius: 100px;
-            font-family: var(--font-display);
-            font-size: 14px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--text-main);
-            color: #FFF;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(249, 74, 0, 0.15);
-        }
-
-        .badge {
-            display: inline-flex;
-            padding: 6px 14px;
-            background: var(--accent-soft);
-            color: var(--accent);
-            border-radius: 100px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 24px;
-        }
-
-        /* ─── NAVIGATION ─── */
+        /* ─── NAVIGATION: SHARP & FUNCTIONAL ─── */
         .nav {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -92,7 +49,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
         }
@@ -101,132 +58,131 @@
             font-family: var(--font-display);
             font-size: 20px;
             font-weight: 800;
-            color: var(--text-main);
             text-decoration: none;
-            letter-spacing: -0.5px;
+            color: var(--text-100);
+            letter-spacing: -0.03em;
         }
 
         .nav__logo span { color: var(--accent); }
 
-        /* ─── HERO SECTION ─── */
+        .nav__cta {
+            background: var(--text-100);
+            color: #FFF;
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 12px 28px;
+            border-radius: 100px;
+            transition: var(--transition);
+        }
+
+        .nav__cta:hover {
+            background: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        /* ─── HERO: MAXIMUM TYPOGRAPHIC CONTRAST ─── */
         .hero {
-            padding: 200px 40px 120px;
-            max-width: var(--container);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 40px;
+            max-width: 1400px;
             margin: 0 auto;
-            text-align: left;
+        }
+
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            background: var(--accent-dim);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 32px;
         }
 
         .hero__title {
             font-family: var(--font-display);
-            font-size: clamp(48px, 8vw, 110px);
+            font-size: clamp(40px, 9vw, 120px);
             font-weight: 800;
-            line-height: 0.9;
-            letter-spacing: -0.04em;
+            line-height: 0.85;
+            letter-spacing: -0.05em;
             margin-bottom: 40px;
         }
 
-        .hero__title span { display: block; }
-        .hero__title .dim { color: var(--text-dim); }
-
-        .hero__description {
-            font-size: clamp(18px, 2vw, 24px);
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 48px;
-            font-weight: 400;
+        .hero__title .dim {
+            color: var(--text-20);
+            transition: var(--transition);
         }
 
-        /* ─── LAYOUT: THE SPLIT ─── */
-        .section-split {
+        .hero__title:hover .dim {
+            color: var(--text-100);
+        }
+
+        .hero__description {
+            font-size: clamp(18px, 2.5vw, 28px);
+            max-width: 800px;
+            color: var(--text-80);
+            font-weight: 400;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+            margin-bottom: 48px;
+        }
+
+        /* ─── SPLIT SECTION: FACTORY PRECISION ─── */
+        .split {
             display: grid;
             grid-template-columns: 300px 1fr;
-            gap: 80px;
+            gap: 100px;
             padding: 120px 40px;
-            max-width: var(--container);
+            max-width: 1400px;
             margin: 0 auto;
             border-top: 1px solid var(--border);
         }
 
-        .section-split__label {
-            position: sticky;
-            top: 120px;
-            height: fit-content;
+        .split__label {
             font-family: var(--font-display);
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.2em;
-            color: var(--text-dim);
+            color: var(--text-30);
+            position: sticky;
+            top: 120px;
+            height: fit-content;
         }
 
         .h2 {
             font-family: var(--font-display);
-            font-size: clamp(32px, 5vw, 64px);
-            line-height: 1.1;
-            letter-spacing: -0.02em;
+            font-size: clamp(32px, 5vw, 72px);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.03em;
             margin-bottom: 60px;
         }
 
-        /* ─── FEATURE GRID ─── */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
-        .card {
-            padding: 48px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            transition: all 0.4s ease;
-        }
-
-        .card:hover {
-            border-color: var(--accent);
-            transform: translateY(-8px);
-        }
-
-        .card__icon {
-            width: 48px;
-            height: 48px;
-            background: var(--accent-soft);
-            border-radius: 12px;
-            margin-bottom: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-        }
-
-        .card h3 {
-            font-family: var(--font-display);
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 16px;
-        }
-
-        /* ─── NOISE TEXTURE ─── */
-        body::before {
-            content: "";
+        /* ─── THE GRAIN OVERLAY ─── */
+        body::after {
+            content: '';
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0.03;
-            z-index: 9999;
+            inset: 0;
             pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
         }
 
-        /* ─── RESPONSIVE ─── */
         @media (max-width: 1024px) {
-            .section-split { grid-template-columns: 1fr; gap: 40px; }
-            .section-split__label { position: static; }
+            .split { grid-template-columns: 1fr; gap: 40px; padding: 80px 24px; }
             .nav { padding: 20px; }
-            .hero { padding: 160px 20px 80px; }
+            .hero { padding: 0 24px; }
         }
     </style>
 </head>
@@ -234,58 +190,26 @@
 
     <nav class="nav">
         <a href="#" class="nav__logo">monetize<span>.global</span></a>
-        <a href="#join" class="btn btn-primary">Start Earning</a>
+        <a href="#" class="nav__cta">Join Waitlist</a>
     </nav>
 
     <main>
         <section class="hero">
-            <div class="badge">Beta Access Now Open</div>
+            <div class="hero__badge">Available Now</div>
             <h1 class="hero__title">
-                <span>Turn your DMs</span>
-                <span class="dim">Into Pure Revenue.</span>
+                Turn DMs<br>
+                <span class="dim">Into Revenue.</span>
             </h1>
             <p class="hero__description">
                 The world’s first automated conversion layer for high-ticket creators. Stop losing leads to the "seen" receipt.
             </p>
-            <div class="hero__actions">
-                <a href="#join" class="btn btn-primary">Claim your handle</a>
-            </div>
         </section>
 
-        <section class="section-split">
-            <aside class="section-split__label">01 / The Problem</aside>
-            <div class="section-split__content">
-                <h2 class="h2">Attention is expensive.<br>Don't let it leak.</h2>
-                <div class="grid">
-                    <div class="card">
-                        <div class="card__icon">⚡</div>
-                        <h3>Instant Response</h3>
-                        <p>Our AI triggers the moment a prospect hits your inbox, qualifying them in seconds while they are hot.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card__icon">💰</div>
-                        <h3>Frictionless Pay</h3>
-                        <p>Generate secure checkout links directly inside the chat. No external sites, no drop-offs.</p>
-                    </div>
+        <section class="split">
+            <div class="split__label">01 // Overview</div>
+            <div class="split__content">
+                <h2 class="h2">Engineered for high-ticket conversion.</h2>
                 </div>
-            </div>
-        </section>
-
-        <section class="section-split">
-            <aside class="section-split__label">02 / Ecosystem</aside>
-            <div class="section-split__content">
-                <h2 class="h2">Built for the<br>Modern Creator.</h2>
-                <div class="grid">
-                    <div class="card">
-                        <h3>Strategy</h3>
-                        <p>Frameworks used by 7-figure creators to bridge the gap between content and cashflow.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Automation</h3>
-                        <p>Complex workflows simplified into a single dashboard. Manage IG, X, and LinkedIn in one place.</p>
-                    </div>
-                </div>
-            </div>
         </section>
     </main>
 
