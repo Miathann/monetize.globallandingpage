@@ -715,7 +715,6 @@
     <!-- NAV -->
     <nav class="nav" id="nav">
         <a href="#" class="nav__logo">monetize<span>.</span>global</a>
-        <span id="navProgress" class="nav__progress">0.00%</span>
         <button class="nav__cta" onclick="handleCTA()">Get Beta Access</button>
     </nav>
 
@@ -1132,25 +1131,6 @@
         el.addEventListener('mouseenter', () => { cursor.style.width = '20px'; cursor.style.height = '20px'; cursorRing.style.width = '56px'; cursorRing.style.height = '56px'; });
         el.addEventListener('mouseleave', () => { cursor.style.width = '10px'; cursor.style.height = '10px'; cursorRing.style.width = '36px'; cursorRing.style.height = '36px'; });
     });
-
-    // ─── NAV scroll (light hero — always show dark logo) ───
-    const scrollProgress = document.getElementById('scrollProgress');
-    const navProgress = document.getElementById('navProgress');
-    const nav = document.getElementById('nav');
-    let lastScroll = 0;
-
-    function onScroll() {
-        const scrolled = window.scrollY;
-        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        const pct = Math.min((scrolled / maxScroll) * 100, 100);
-        document.documentElement.style.setProperty('--progress-width', pct + '%');
-        navProgress.textContent = pct.toFixed(2) + '%';
-        nav.classList.toggle('scrolled', scrolled > 80);
-        if (scrolled > lastScroll && scrolled > 200) nav.style.transform = 'translateY(-100%)';
-        else nav.style.transform = 'translateY(0)';
-        lastScroll = scrolled;
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
 
     // ─── HERO ENTRY ───
     setTimeout(() => {
