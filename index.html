@@ -715,6 +715,7 @@
     <!-- NAV -->
     <nav class="nav" id="nav">
         <a href="#" class="nav__logo">monetize<span>.</span>global</a>
+        <span id="navProgress" class="nav__progress">0.00%</span>
         <button class="nav__cta" onclick="handleCTA()">Get Beta Access</button>
     </nav>
 
@@ -727,7 +728,8 @@
                 FOUNDING MEMBERS ONLY
             </div>
 
-            <h1 class="hero__title" id="heroTitle">Make Money From Every DM You Receive. <span class="dim">Instantly.</span>
+            <h1 class="hero__title" id="heroTitle">
+                Make Money From Every DM You Receive. <span class="dim">Instantly.</span>
             </h1>
 
             <p class="hero__sub" id="heroSub">They made billions building tools for brands to reach your audience. We built the one tool that finally works for you.</p>
@@ -740,7 +742,7 @@
                 <button class="btn-outline" onclick="document.getElementById('solution').scrollIntoView({behavior:'smooth'})">See how it works</button>
             </div>
 
-            <p class="hero__pricing-note" id="heroPricing">$45/MONTH — LOCKED IN FOR FOUNDING MEMBERS</p>
+            <p class="hero__pricing-note" id="heroPricing">$45/MONTH LOCKED · FREE TO START (500 DMs/MO) · CANCEL ANYTIME BEFORE LAUNCH</p>
 
             <div class="hero__social-strip" id="heroSocial">
                 <div class="social-strip__faces">
@@ -749,7 +751,7 @@
                     <div class="social-strip__face"></div>
                     <div class="social-strip__face"></div>
                 </div>
-                <div class="social-strip__text"><strong>200+ creators</strong> already on the waitlist</div>
+                <div class="social-strip__text"><strong>XXX+ creators</strong> already on the waitlist</div>
             </div>
         </div>
 
@@ -757,12 +759,19 @@
         <div class="hero__right">
             <div class="hero__photo" id="heroPhoto"></div>
 
+            <!-- Floating stat pill: top right of photo -->
+            <div class="hero__stat-pill" id="heroStatPill">
+                <div class="stat-pill-num">80%+</div>
+                <div class="stat-pill-label">DM OPEN RATE</div>
+            </div>
+
             <!-- Floating DM card: bottom left of photo -->
             <div class="hero__dm-float" id="dmPreview">
                 <div class="dm-float-header">
                     <div class="dm-float-avatar"></div>
                     <div>
-                        <div class="dm-float-name">@lili</div>
+                        <div class="dm-float-name">@sarahk.style</div>
+                        <div class="dm-float-status">AI Active</div>
                     </div>
                 </div>
                 <div class="dm-float-messages" id="dmMessages"></div>
@@ -987,7 +996,7 @@
                     Reserve My Founding Spot
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
-                <div style="margin-top:12px;font-family:var(--font-mono);font-size:11px;color:var(--text-30);letter-spacing:1px">LIMITED SPOTS — $45/MONTH LOCKED FOR LIFE</div>
+                <div style="margin-top:12px;font-family:var(--font-mono);font-size:11px;color:var(--text-30);letter-spacing:1px">FREE TO START · $45/MO FOUNDING RATE · CANCEL ANYTIME BEFORE LAUNCH</div>
             </div>
         </div>
     </section>
@@ -998,6 +1007,10 @@
         <div class="split__content">
             <h2 class="h2 word-reveal">Real answers. <span style="color:var(--text-30)">Not marketing fluff.</span></h2>
             <div class="faq__list reveal reveal-delay-1">
+                <div class="faq__item">
+                    <div class="faq__trigger"><div class="faq__question">Is there a free plan?</div><div class="faq__icon">+</div></div>
+                    <div class="faq__answer"><div class="faq__answer-inner">Yes. We offer a free tier — up to 500 DMs per month — so you can see real results in your actual inbox before committing to anything. Most creators who start free convert within the first two weeks once they see the revenue impact. The founding rate of $45/month locks in only when you're ready.</div></div>
+                </div>
                 <div class="faq__item">
                     <div class="faq__trigger"><div class="faq__question">Will my followers know it's AI?</div><div class="faq__icon">+</div></div>
                     <div class="faq__answer"><div class="faq__answer-inner">In our testing, they don't. Because we trained the model on your actual voice: your phrasing, your cadence, your recommendation style — not a generic AI template. You control the responses and can review or edit before going fully automated.</div></div>
@@ -1020,7 +1033,7 @@
                 </div>
                 <div class="faq__item">
                     <div class="faq__trigger"><div class="faq__question">What if I don't like it?</div><div class="faq__icon">+</div></div>
-                    <div class="faq__answer"><div class="faq__answer-inner">Founding spots are reserved for creators who are serious about building a real revenue channel. Because of the onboarding investment we make on your behalf, founding memberships are non-refundable after setup. We'd rather be upfront about that than surprise you later.</div></div>
+                    <div class="faq__answer"><div class="faq__answer-inner">Start free — no credit card, no commitment. If you upgrade to a founding membership and change your mind before launch, cancel anytime. We want creators who see the revenue impact and choose to stay, not creators locked in by fine print.</div></div>
                 </div>
             </div>
         </div>
@@ -1070,7 +1083,7 @@
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
         </div>
-        <p class="reveal reveal-delay-3" style="margin-top:20px;font-family:var(--font-mono);font-size:11px;color:var(--text-30);letter-spacing:1px">$45/MONTH LOCKED IN — FOUNDING MEMBERSHIPS NON-REFUNDABLE AFTER ONBOARDING</p>
+        <p class="reveal reveal-delay-3" style="margin-top:20px;font-family:var(--font-mono);font-size:11px;color:var(--text-30);letter-spacing:1px">FREE TO START · $45/MO FOUNDING RATE · CANCEL ANYTIME BEFORE LAUNCH</p>
     </section>
 
     <!-- SOURCES -->
@@ -1132,6 +1145,25 @@
         el.addEventListener('mouseleave', () => { cursor.style.width = '10px'; cursor.style.height = '10px'; cursorRing.style.width = '36px'; cursorRing.style.height = '36px'; });
     });
 
+    // ─── NAV scroll (light hero — always show dark logo) ───
+    const scrollProgress = document.getElementById('scrollProgress');
+    const navProgress = document.getElementById('navProgress');
+    const nav = document.getElementById('nav');
+    let lastScroll = 0;
+
+    function onScroll() {
+        const scrolled = window.scrollY;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = Math.min((scrolled / maxScroll) * 100, 100);
+        document.documentElement.style.setProperty('--progress-width', pct + '%');
+        navProgress.textContent = pct.toFixed(2) + '%';
+        nav.classList.toggle('scrolled', scrolled > 80);
+        if (scrolled > lastScroll && scrolled > 200) nav.style.transform = 'translateY(-100%)';
+        else nav.style.transform = 'translateY(0)';
+        lastScroll = scrolled;
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+
     // ─── HERO ENTRY ───
     setTimeout(() => {
         document.getElementById('heroBadge').classList.add('vis');
@@ -1171,7 +1203,7 @@
     const dmConversations = [
         { type: 'in', text: 'omg where did you get that top??' },
         { type: 'typing' },
-        { type: 'out', text: 'It\'s the Aritzia Effortless! https://links.monetize.global/aritzia-effortless-pant-sarahlynn 🧡' },
+        { type: 'out', text: 'It\'s the Aritzia Effortless! https://links.monetize.global/aritzia-effortless 🧡' },
         { type: 'in', text: 'just bought it! you\'re the best' },
         { type: 'revenue' }
     ];
